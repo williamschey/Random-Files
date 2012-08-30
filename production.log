@@ -1,0 +1,505 @@
+Connecting to database specified by database.yml
+Creating scope :active. Overwriting existing method User.active.
+Creating scope :open. Overwriting existing method Version.open.
+DEPRECATION WARNING: The InstanceMethods module inside ActiveSupport::Concern will be no longer included automatically. Please define instance methods directly in CollectiveIdea::Acts::NestedSet::Model instead. (called from include at /usr/share/redmine/lib/plugins/awesome_nested_set/lib/awesome_nested_set/awesome_nested_set.rb:58)
+DEBUG: searchable options on act: {:columns=>["attachments.filename", "attachments.description"], :project_key=>"project_id", :date_column=>"attachments.created_on", :permission=>:view_documents, :order_column=>"attachments.created_on"}
+OpenIdAuthentication.store is nil. Using in-memory store.
+DEPRECATION WARNING: The InstanceMethods module inside ActiveSupport::Concern will be no longer included automatically. Please define instance methods directly in CollectiveIdea::Acts::NestedSet::Model instead. (called from include at /usr/share/redmine/lib/plugins/awesome_nested_set/lib/awesome_nested_set/awesome_nested_set.rb:58)
+Creating scope :open. Overwriting existing method Issue.open.
+
+
+Started GET "/" for 115.187.245.21 at 2012-08-30 21:38:21 +1000
+Processing by WelcomeController#index as HTML
+  [1m[36m (0.0ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."id" = $1 AND (users.status = 1) LIMIT 1  [["id", 3]]
+  [1m[36mSQL (10.0ms)[0m  [1mSELECT "news"."id" AS t0_r0, "news"."project_id" AS t0_r1, "news"."title" AS t0_r2, "news"."summary" AS t0_r3, "news"."description" AS t0_r4, "news"."author_id" AS t0_r5, "news"."created_on" AS t0_r6, "news"."comments_count" AS t0_r7, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12, "users"."id" AS t2_r0, "users"."login" AS t2_r1, "users"."hashed_password" AS t2_r2, "users"."firstname" AS t2_r3, "users"."lastname" AS t2_r4, "users"."mail" AS t2_r5, "users"."admin" AS t2_r6, "users"."status" AS t2_r7, "users"."last_login_on" AS t2_r8, "users"."language" AS t2_r9, "users"."auth_source_id" AS t2_r10, "users"."created_on" AS t2_r11, "users"."updated_on" AS t2_r12, "users"."type" AS t2_r13, "users"."identity_url" AS t2_r14, "users"."mail_notification" AS t2_r15, "users"."salt" AS t2_r16 FROM "news" LEFT OUTER JOIN "projects" ON "projects"."id" = "news"."project_id" LEFT OUTER JOIN "users" ON "users"."id" = "news"."author_id" AND "users"."type" IN ('User', 'AnonymousUser') WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='news')) ORDER BY news.created_on DESC LIMIT 5[0m
+  [1m[35mProject Load (0.0ms)[0m  SELECT "projects".* FROM "projects" WHERE (projects.status=1) ORDER BY created_on DESC LIMIT 5
+  [1m[36mSetting Load (0.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'welcome_text' LIMIT 1[0m
+  [1m[35mSetting Load (0.0ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'text_formatting' LIMIT 1
+  [1m[36mSetting Load (0.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'cache_formatted_text' LIMIT 1[0m
+  [1m[35mSetting Load (0.0ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'user_format' LIMIT 1
+  [1m[36mUserPreference Load (0.0ms)[0m  [1mSELECT "user_preferences".* FROM "user_preferences" WHERE "user_preferences"."user_id" = 3 LIMIT 1[0m
+  [1m[35mSetting Load (0.0ms)[0m  SELECT "settings".* FROM "settings" WHERE "settings"."name" = 'date_format' LIMIT 1
+  [1m[36mSetting Load (0.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'time_format' LIMIT 1[0m
+  Rendered news/_news.html.erb (30.0ms)
+  [1m[35mSQL (0.0ms)[0m  SELECT "issues"."id" AS t0_r0, "issues"."tracker_id" AS t0_r1, "issues"."project_id" AS t0_r2, "issues"."subject" AS t0_r3, "issues"."description" AS t0_r4, "issues"."due_date" AS t0_r5, "issues"."category_id" AS t0_r6, "issues"."status_id" AS t0_r7, "issues"."assigned_to_id" AS t0_r8, "issues"."priority_id" AS t0_r9, "issues"."fixed_version_id" AS t0_r10, "issues"."author_id" AS t0_r11, "issues"."lock_version" AS t0_r12, "issues"."created_on" AS t0_r13, "issues"."updated_on" AS t0_r14, "issues"."start_date" AS t0_r15, "issues"."done_ratio" AS t0_r16, "issues"."estimated_hours" AS t0_r17, "issues"."parent_id" AS t0_r18, "issues"."root_id" AS t0_r19, "issues"."lft" AS t0_r20, "issues"."rgt" AS t0_r21, "issues"."is_private" AS t0_r22, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12, "issue_statuses"."id" AS t2_r0, "issue_statuses"."name" AS t2_r1, "issue_statuses"."is_closed" AS t2_r2, "issue_statuses"."is_default" AS t2_r3, "issue_statuses"."position" AS t2_r4, "issue_statuses"."default_done_ratio" AS t2_r5 FROM "issues" LEFT OUTER JOIN "projects" ON "projects"."id" = "issues"."project_id" LEFT OUTER JOIN "issue_statuses" ON "issue_statuses"."id" = "issues"."status_id" WHERE "issues"."id" = 16712 AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='issue_tracking')) LIMIT 1
+  [1m[36mSetting Load (0.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'ui_theme' LIMIT 1[0m
+  [1m[35mToken Load (0.0ms)[0m  SELECT "tokens".* FROM "tokens" WHERE "tokens"."user_id" = 3 AND (action='feeds') LIMIT 1
+  [1m[36mSetting Load (0.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'app_title' LIMIT 1[0m
+  Rendered welcome/index.html.erb within layouts/base (6160.2ms)
+  [1m[35mSQL (10.0ms)[0m  SELECT "members"."id" AS t0_r0, "members"."user_id" AS t0_r1, "members"."project_id" AS t0_r2, "members"."created_on" AS t0_r3, "members"."mail_notification" AS t0_r4, "members"."dmsf_mail_notification" AS t0_r5, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12, "roles"."id" AS t2_r0, "roles"."name" AS t2_r1, "roles"."position" AS t2_r2, "roles"."assignable" AS t2_r3, "roles"."builtin" AS t2_r4, "roles"."permissions" AS t2_r5, "roles"."issues_visibility" AS t2_r6 FROM "members" LEFT OUTER JOIN "projects" ON "projects"."id" = "members"."project_id" LEFT OUTER JOIN "member_roles" ON "member_roles"."member_id" = "members"."id" LEFT OUTER JOIN "roles" ON "roles"."id" = "member_roles"."role_id" WHERE "members"."user_id" = 3 AND (projects.status=1) ORDER BY projects.name
+Completed 200 OK in 6540ms (Views: 6310.2ms | ActiveRecord: 30.0ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&q=strange" for 115.187.245.21 at 2012-08-30 21:38:32 +1000
+Processing by SearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"strange"}
+  [1m[36m (0.0ms)[0m  [1mSELECT MAX("settings"."updated_on") AS max_id FROM "settings" [0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."type" IN ('User', 'AnonymousUser') AND "users"."id" = $1 AND (users.status = 1) LIMIT 1  [["id", 3]]
+  [1m[36mSetting Load (10.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'plugin_redmine_xapian' LIMIT 1[0m
+DEBUG: params[:user_stem_lang]nil"english"
+DEBUG: params[:user_stem_strategy]nil"STEM_NONE"
+  [1m[35mCustomField Load (0.0ms)[0m  SELECT id FROM "custom_fields" WHERE "custom_fields"."type" = 'IssueCustomField' AND "custom_fields"."searchable" = 't'
+  [1m[36m (60.0ms)[0m  [1mSELECT COUNT(DISTINCT "issues"."id") FROM "issues" LEFT OUTER JOIN "projects" ON "projects"."id" = "issues"."project_id" LEFT OUTER JOIN "journals" ON "journals"."journalized_id" = "issues"."id" AND "journals"."journalized_type" = 'Issue' WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='issue_tracking')) AND (((LOWER(subject) LIKE '%strange%') OR (LOWER(issues.description) LIKE '%strange%') OR (LOWER(journals.notes) LIKE '%strange%') OR issues.id IN (SELECT customized_id FROM custom_values WHERE customized_type='Issue' AND customized_id=issues.id AND LOWER(value) LIKE '%strange%' AND custom_values.custom_field_id IN (6,8,10,12,4,5,17,21,22,26,27,28,29,30))))[0m
+  [1m[35mIssue Load (70.0ms)[0m  SELECT DISTINCT "issues".id, issues.id AS alias_0 FROM "issues" LEFT OUTER JOIN "projects" ON "projects"."id" = "issues"."project_id" LEFT OUTER JOIN "journals" ON "journals"."journalized_id" = "issues"."id" AND "journals"."journalized_type" = 'Issue' WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='issue_tracking')) AND (((LOWER(subject) LIKE '%strange%') OR (LOWER(issues.description) LIKE '%strange%') OR (LOWER(journals.notes) LIKE '%strange%') OR issues.id IN (SELECT customized_id FROM custom_values WHERE customized_type='Issue' AND customized_id=issues.id AND LOWER(value) LIKE '%strange%' AND custom_values.custom_field_id IN (6,8,10,12,4,5,17,21,22,26,27,28,29,30)))) ORDER BY issues.id DESC LIMIT 11
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "issues"."id" AS t0_r0, "issues"."tracker_id" AS t0_r1, "issues"."project_id" AS t0_r2, "issues"."subject" AS t0_r3, "issues"."description" AS t0_r4, "issues"."due_date" AS t0_r5, "issues"."category_id" AS t0_r6, "issues"."status_id" AS t0_r7, "issues"."assigned_to_id" AS t0_r8, "issues"."priority_id" AS t0_r9, "issues"."fixed_version_id" AS t0_r10, "issues"."author_id" AS t0_r11, "issues"."lock_version" AS t0_r12, "issues"."created_on" AS t0_r13, "issues"."updated_on" AS t0_r14, "issues"."start_date" AS t0_r15, "issues"."done_ratio" AS t0_r16, "issues"."estimated_hours" AS t0_r17, "issues"."parent_id" AS t0_r18, "issues"."root_id" AS t0_r19, "issues"."lft" AS t0_r20, "issues"."rgt" AS t0_r21, "issues"."is_private" AS t0_r22, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12, "journals"."id" AS t2_r0, "journals"."journalized_id" AS t2_r1, "journals"."journalized_type" AS t2_r2, "journals"."user_id" AS t2_r3, "journals"."notes" AS t2_r4, "journals"."created_on" AS t2_r5 FROM "issues" LEFT OUTER JOIN "projects" ON "projects"."id" = "issues"."project_id" LEFT OUTER JOIN "journals" ON "journals"."journalized_id" = "issues"."id" AND "journals"."journalized_type" = 'Issue' WHERE "issues"."id" IN (830) AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='issue_tracking')) AND (((LOWER(subject) LIKE '%strange%') OR (LOWER(issues.description) LIKE '%strange%') OR (LOWER(journals.notes) LIKE '%strange%') OR issues.id IN (SELECT customized_id FROM custom_values WHERE customized_type='Issue' AND customized_id=issues.id AND LOWER(value) LIKE '%strange%' AND custom_values.custom_field_id IN (6,8,10,12,4,5,17,21,22,26,27,28,29,30)))) ORDER BY issues.id DESC[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "news"."id") FROM "news" LEFT OUTER JOIN "projects" ON "projects"."id" = "news"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='news')) AND (((LOWER(title) LIKE '%strange%') OR (LOWER(summary) LIKE '%strange%') OR (LOWER(news.description) LIKE '%strange%')))
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "news"."id" AS t0_r0, "news"."project_id" AS t0_r1, "news"."title" AS t0_r2, "news"."summary" AS t0_r3, "news"."description" AS t0_r4, "news"."author_id" AS t0_r5, "news"."created_on" AS t0_r6, "news"."comments_count" AS t0_r7, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12 FROM "news" LEFT OUTER JOIN "projects" ON "projects"."id" = "news"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='news')) AND (((LOWER(title) LIKE '%strange%') OR (LOWER(summary) LIKE '%strange%') OR (LOWER(news.description) LIKE '%strange%'))) ORDER BY news.created_on DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "documents"."id") FROM "documents" LEFT OUTER JOIN "projects" ON "projects"."id" = "documents"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(title) LIKE '%strange%') OR (LOWER(documents.description) LIKE '%strange%')))
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "documents"."id" AS t0_r0, "documents"."project_id" AS t0_r1, "documents"."category_id" AS t0_r2, "documents"."title" AS t0_r3, "documents"."description" AS t0_r4, "documents"."created_on" AS t0_r5, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12 FROM "documents" LEFT OUTER JOIN "projects" ON "projects"."id" = "documents"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(title) LIKE '%strange%') OR (LOWER(documents.description) LIKE '%strange%'))) ORDER BY documents.created_on DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "changesets"."id") FROM "changesets" LEFT OUTER JOIN "repositories" ON "repositories"."id" = "changesets"."repository_id" LEFT OUTER JOIN "projects" ON "projects"."id" = "repositories"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='repository')) AND (((LOWER(comments) LIKE '%strange%')))
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "changesets"."id" AS t0_r0, "changesets"."repository_id" AS t0_r1, "changesets"."revision" AS t0_r2, "changesets"."committer" AS t0_r3, "changesets"."committed_on" AS t0_r4, "changesets"."comments" AS t0_r5, "changesets"."commit_date" AS t0_r6, "changesets"."scmid" AS t0_r7, "changesets"."user_id" AS t0_r8, "repositories"."id" AS t1_r0, "repositories"."project_id" AS t1_r1, "repositories"."url" AS t1_r2, "repositories"."login" AS t1_r3, "repositories"."password" AS t1_r4, "repositories"."root_url" AS t1_r5, "repositories"."type" AS t1_r6, "repositories"."path_encoding" AS t1_r7, "repositories"."log_encoding" AS t1_r8, "repositories"."extra_info" AS t1_r9, "repositories"."identifier" AS t1_r10, "repositories"."is_default" AS t1_r11, "projects"."id" AS t2_r0, "projects"."name" AS t2_r1, "projects"."description" AS t2_r2, "projects"."homepage" AS t2_r3, "projects"."is_public" AS t2_r4, "projects"."parent_id" AS t2_r5, "projects"."created_on" AS t2_r6, "projects"."updated_on" AS t2_r7, "projects"."identifier" AS t2_r8, "projects"."status" AS t2_r9, "projects"."lft" AS t2_r10, "projects"."rgt" AS t2_r11, "projects"."dmsf_description" AS t2_r12 FROM "changesets" LEFT OUTER JOIN "repositories" ON "repositories"."id" = "changesets"."repository_id" LEFT OUTER JOIN "projects" ON "projects"."id" = "repositories"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='repository')) AND (((LOWER(comments) LIKE '%strange%'))) ORDER BY committed_on DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "wiki_pages"."id") FROM "wiki_pages" LEFT OUTER JOIN "wikis" ON "wikis"."id" = "wiki_pages"."wiki_id" LEFT OUTER JOIN "projects" ON "projects"."id" = "wikis"."project_id" LEFT OUTER JOIN "wiki_contents" ON "wiki_contents"."page_id" = "wiki_pages"."id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='wiki')) AND (((LOWER(title) LIKE '%strange%') OR (LOWER(wiki_contents.text) LIKE '%strange%')))
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "wiki_pages"."id" AS t0_r0, "wiki_pages"."wiki_id" AS t0_r1, "wiki_pages"."title" AS t0_r2, "wiki_pages"."created_on" AS t0_r3, "wiki_pages"."protected" AS t0_r4, "wiki_pages"."parent_id" AS t0_r5, "wikis"."id" AS t1_r0, "wikis"."project_id" AS t1_r1, "wikis"."start_page" AS t1_r2, "wikis"."status" AS t1_r3, "projects"."id" AS t2_r0, "projects"."name" AS t2_r1, "projects"."description" AS t2_r2, "projects"."homepage" AS t2_r3, "projects"."is_public" AS t2_r4, "projects"."parent_id" AS t2_r5, "projects"."created_on" AS t2_r6, "projects"."updated_on" AS t2_r7, "projects"."identifier" AS t2_r8, "projects"."status" AS t2_r9, "projects"."lft" AS t2_r10, "projects"."rgt" AS t2_r11, "projects"."dmsf_description" AS t2_r12, "wiki_contents"."id" AS t3_r0, "wiki_contents"."page_id" AS t3_r1, "wiki_contents"."author_id" AS t3_r2, "wiki_contents"."text" AS t3_r3, "wiki_contents"."comments" AS t3_r4, "wiki_contents"."updated_on" AS t3_r5, "wiki_contents"."version" AS t3_r6 FROM "wiki_pages" LEFT OUTER JOIN "wikis" ON "wikis"."id" = "wiki_pages"."wiki_id" LEFT OUTER JOIN "projects" ON "projects"."id" = "wikis"."project_id" LEFT OUTER JOIN "wiki_contents" ON "wiki_contents"."page_id" = "wiki_pages"."id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='wiki')) AND (((LOWER(title) LIKE '%strange%') OR (LOWER(wiki_contents.text) LIKE '%strange%'))) ORDER BY wiki_pages.created_on DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "messages"."id") FROM "messages" LEFT OUTER JOIN "boards" ON "boards"."id" = "messages"."board_id" LEFT OUTER JOIN "projects" ON "projects"."id" = "boards"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='boards')) AND (((LOWER(subject) LIKE '%strange%') OR (LOWER(content) LIKE '%strange%')))
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "messages"."id" AS t0_r0, "messages"."board_id" AS t0_r1, "messages"."parent_id" AS t0_r2, "messages"."subject" AS t0_r3, "messages"."content" AS t0_r4, "messages"."author_id" AS t0_r5, "messages"."replies_count" AS t0_r6, "messages"."last_reply_id" AS t0_r7, "messages"."created_on" AS t0_r8, "messages"."updated_on" AS t0_r9, "messages"."locked" AS t0_r10, "messages"."sticky" AS t0_r11, "boards"."id" AS t1_r0, "boards"."project_id" AS t1_r1, "boards"."name" AS t1_r2, "boards"."description" AS t1_r3, "boards"."position" AS t1_r4, "boards"."topics_count" AS t1_r5, "boards"."messages_count" AS t1_r6, "boards"."last_message_id" AS t1_r7, "projects"."id" AS t2_r0, "projects"."name" AS t2_r1, "projects"."description" AS t2_r2, "projects"."homepage" AS t2_r3, "projects"."is_public" AS t2_r4, "projects"."parent_id" AS t2_r5, "projects"."created_on" AS t2_r6, "projects"."updated_on" AS t2_r7, "projects"."identifier" AS t2_r8, "projects"."status" AS t2_r9, "projects"."lft" AS t2_r10, "projects"."rgt" AS t2_r11, "projects"."dmsf_description" AS t2_r12 FROM "messages" LEFT OUTER JOIN "boards" ON "boards"."id" = "messages"."board_id" LEFT OUTER JOIN "projects" ON "projects"."id" = "boards"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='boards')) AND (((LOWER(subject) LIKE '%strange%') OR (LOWER(content) LIKE '%strange%'))) ORDER BY messages.created_on DESC LIMIT 11[0m
+  [1m[35mCustomField Load (0.0ms)[0m  SELECT id FROM "custom_fields" WHERE "custom_fields"."type" = 'ProjectCustomField' AND "custom_fields"."searchable" = 't'
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "projects" WHERE (projects.status=1) AND (((LOWER(name) LIKE '%strange%') OR (LOWER(identifier) LIKE '%strange%') OR (LOWER(description) LIKE '%strange%') OR projects.id IN (SELECT customized_id FROM custom_values WHERE customized_type='Project' AND customized_id=projects.id AND LOWER(value) LIKE '%strange%' AND custom_values.custom_field_id IN (16))))[0m
+  [1m[35mProject Load (10.0ms)[0m  SELECT "projects".* FROM "projects" WHERE (projects.status=1) AND (((LOWER(name) LIKE '%strange%') OR (LOWER(identifier) LIKE '%strange%') OR (LOWER(description) LIKE '%strange%') OR projects.id IN (SELECT customized_id FROM custom_values WHERE customized_type='Project' AND customized_id=projects.id AND LOWER(value) LIKE '%strange%' AND custom_values.custom_field_id IN (16)))) ORDER BY projects.created_on DESC LIMIT 11
+  [1m[36mSetting Load (0.0ms)[0m  [1mSELECT "settings".* FROM "settings" WHERE "settings"."name" = 'plugin_redmine_dmsf' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "dmsf_files"."id") FROM "dmsf_files" LEFT OUTER JOIN "projects" ON "projects"."id" = "dmsf_files"."project_id" LEFT OUTER JOIN "dmsf_file_revisions" ON "dmsf_file_revisions"."dmsf_file_id" = "dmsf_files"."id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='dmsf') AND dmsf_files.deleted = 'f') AND (((LOWER(dmsf_files.name) LIKE '%strange%') OR (LOWER(dmsf_file_revisions.title) LIKE '%strange%') OR (LOWER(dmsf_file_revisions.description) LIKE '%strange%')))
+  [1m[36mDmsfFile Load (0.0ms)[0m  [1mSELECT DISTINCT "dmsf_files".id, dmsf_files.updated_at AS alias_0 FROM "dmsf_files" LEFT OUTER JOIN "projects" ON "projects"."id" = "dmsf_files"."project_id" LEFT OUTER JOIN "dmsf_file_revisions" ON "dmsf_file_revisions"."dmsf_file_id" = "dmsf_files"."id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='dmsf') AND dmsf_files.deleted = 'f') AND (((LOWER(dmsf_files.name) LIKE '%strange%') OR (LOWER(dmsf_file_revisions.title) LIKE '%strange%') OR (LOWER(dmsf_file_revisions.description) LIKE '%strange%'))) ORDER BY dmsf_files.updated_at DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(DISTINCT "dmsf_folders"."id") FROM "dmsf_folders" LEFT OUTER JOIN "projects" ON "projects"."id" = "dmsf_folders"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='dmsf')) AND (((LOWER(dmsf_folders.title) LIKE '%strange%') OR (LOWER(dmsf_folders.description) LIKE '%strange%')))
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "dmsf_folders"."id" AS t0_r0, "dmsf_folders"."project_id" AS t0_r1, "dmsf_folders"."dmsf_folder_id" AS t0_r2, "dmsf_folders"."title" AS t0_r3, "dmsf_folders"."description" AS t0_r4, "dmsf_folders"."notification" AS t0_r5, "dmsf_folders"."user_id" AS t0_r6, "dmsf_folders"."created_at" AS t0_r7, "dmsf_folders"."updated_at" AS t0_r8, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11, "projects"."dmsf_description" AS t1_r12 FROM "dmsf_folders" LEFT OUTER JOIN "projects" ON "projects"."id" = "dmsf_folders"."project_id" WHERE (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='dmsf')) AND (((LOWER(dmsf_folders.title) LIKE '%strange%') OR (LOWER(dmsf_folders.description) LIKE '%strange%'))) ORDER BY dmsf_folders.updated_at DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "attachments" INNER JOIN documents ON documents.id=container_id LEFT JOIN projects ON documents.project_id = projects.id WHERE "attachments"."container_type" = 'Document' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%')))
+  [1m[36mAttachment Load (0.0ms)[0m  [1mSELECT "attachments".* FROM "attachments" INNER JOIN documents ON documents.id=container_id LEFT JOIN projects ON documents.project_id = projects.id WHERE "attachments"."container_type" = 'Document' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%'))) ORDER BY attachments.created_on DESC LIMIT 11[0m
+  [1m[35m (10.0ms)[0m  SELECT COUNT(*) FROM "attachments" INNER JOIN wiki_pages ON wiki_pages.id=container_id INNER JOIN wikis ON wikis.id=wiki_pages.wiki_id INNER JOIN projects ON wikis.project_id = projects.id WHERE "attachments"."container_type" = 'WikiPage' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%')))
+  [1m[36mAttachment Load (0.0ms)[0m  [1mSELECT "attachments".* FROM "attachments" INNER JOIN wiki_pages ON wiki_pages.id=container_id INNER JOIN wikis ON wikis.id=wiki_pages.wiki_id INNER JOIN projects ON wikis.project_id = projects.id WHERE "attachments"."container_type" = 'WikiPage' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%'))) ORDER BY attachments.created_on DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "attachments" INNER JOIN messages ON messages.id=container_id INNER JOIN boards ON boards.id=messages.board_id INNER JOIN projects ON boards.project_id = projects.id WHERE "attachments"."container_type" = 'Message' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%')))
+  [1m[36mAttachment Load (0.0ms)[0m  [1mSELECT "attachments".* FROM "attachments" INNER JOIN messages ON messages.id=container_id INNER JOIN boards ON boards.id=messages.board_id INNER JOIN projects ON boards.project_id = projects.id WHERE "attachments"."container_type" = 'Message' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%'))) ORDER BY attachments.created_on DESC LIMIT 11[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "attachments" INNER JOIN issues ON issues.id=container_id LEFT JOIN projects ON issues.project_id = projects.id WHERE "attachments"."container_type" = 'Issue' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%')))
+  [1m[36mAttachment Load (0.0ms)[0m  [1mSELECT "attachments".* FROM "attachments" INNER JOIN issues ON issues.id=container_id LEFT JOIN projects ON issues.project_id = projects.id WHERE "attachments"."container_type" = 'Issue' AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='documents')) AND (((LOWER(attachments.filename) LIKE '%strange%') OR (LOWER(attachments.description) LIKE '%strange%'))) ORDER BY attachments.created_on DESC LIMIT 11[0m
+DEBUG: results count before xapian 00000
+DEBUG: global settings dump{"enable"=>"true", "index_database"=>"/usr/share/redmine/xapian-index", "stem_on_search"=>"false", "stemming_lang"=>"english", "stem_langs"=>["english"], "stemming_strategy"=>"STEM_NONE"}
+DEBUG: user_stem_lang: "english"
+DEBUG: user_stem_strategy: "STEM_NONE"
+DEBUG: databasepath: /usr/share/redmine/xapian-index/english
+DEBUG queryString is: strange
+DEBUG: Parsed query is: Xapian::Query(strange:(pos=1)) 
+DEBUG: Matches 1-5:
+
+DEBUG: dochash not nil.. 
+DEBUG: limit_conditions 11
+  [1m[35mAttachment Load (0.0ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."disk_filename" = '101223005828_test.docx' LIMIT 1
+DEBUG: docattach not nil..:  #<Attachment id: 1, container_id: 1, container_type: "Document", filename: "test.docx", disk_filename: "101223005828_test.docx", filesize: 3365, content_type: "application/vnd.openxmlformats-officedocument.wordp...", digest: "814806450b255ce1e9a2c11ddb90fb2c", downloads: 0, author_id: 1, created_on: "2010-12-22 14:58:28", description: "">
+  [1m[36mDocument Load (0.0ms)[0m  [1mSELECT "documents".* FROM "documents" WHERE "documents"."id" = 1 LIMIT 1[0m
+DEBUG: adding attach.. 
+  [1m[35mProject Load (0.0ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = 1 LIMIT 1
+  [1m[36mEnabledModule Load (0.0ms)[0m  [1mSELECT name FROM "enabled_modules" WHERE "enabled_modules"."project_id" = 1[0m
+DEBUG: dochash not nil.. 
+DEBUG: limit_conditions 11
+  [1m[35mAttachment Load (0.0ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."disk_filename" = '111122084058_rob.docx' LIMIT 1
+DEBUG: docattach not nil..:  #<Attachment id: 454, container_id: 1, container_type: "WikiPage", filename: "rob.docx", disk_filename: "111122084058_rob.docx", filesize: 9889, content_type: "application/vnd.openxmlformats-officedocument.wordp...", digest: "df2e139fa37ae7c2693e2709c72f2e45", downloads: 0, author_id: 3, created_on: "2011-11-21 22:40:58", description: "">
+  [1m[36mWikiPage Load (0.0ms)[0m  [1mSELECT "wiki_pages".* FROM "wiki_pages" WHERE "wiki_pages"."id" = 1 LIMIT 1[0m
+DEBUG: adding attach.. 
+  [1m[35mWiki Load (0.0ms)[0m  SELECT "wikis".* FROM "wikis" WHERE "wikis"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT name FROM "enabled_modules" WHERE "enabled_modules"."project_id" = 1
+DEBUG: dochash not nil.. 
+DEBUG: limit_conditions 11
+  [1m[36mAttachment Load (0.0ms)[0m  [1mSELECT "attachments".* FROM "attachments" WHERE "attachments"."disk_filename" = '111122091701_random_test_181111.docx' LIMIT 1[0m
+DEBUG: docattach not nil..:  #<Attachment id: 457, container_id: 1, container_type: "WikiPage", filename: "random_test_181111.docx", disk_filename: "111122091701_random_test_181111.docx", filesize: 42697, content_type: "application/vnd.openxmlformats-officedocument.wordp...", digest: "f28df9a3fbd76f6d834f5a51f3b597ef", downloads: 0, author_id: 3, created_on: "2011-11-21 23:17:01", description: "">
+  [1m[35mCACHE (0.0ms)[0m  SELECT "wiki_pages".* FROM "wiki_pages" WHERE "wiki_pages"."id" = 1 LIMIT 1
+DEBUG: adding attach.. 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "wikis".* FROM "wikis" WHERE "wikis"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT name FROM "enabled_modules" WHERE "enabled_modules"."project_id" = 1[0m
+DEBUG: dochash not nil.. 
+DEBUG: limit_conditions 11
+  [1m[35mAttachment Load (0.0ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."disk_filename" = '111027092928_RE_.htm' LIMIT 1
+DEBUG: docattach not nil..:  #<Attachment id: 416, container_id: 740, container_type: "Issue", filename: "RE_.htm", disk_filename: "111027092928_RE_.htm", filesize: 88479, content_type: "text/html", digest: "abde0474ca91058518ac32254e3580e7", downloads: 0, author_id: 31, created_on: "2011-10-26 23:29:28", description: "">
+  [1m[36mIssue Load (0.0ms)[0m  [1mSELECT "issues".* FROM "issues" WHERE "issues"."id" = 740 LIMIT 1[0m
+DEBUG: adding attach.. 
+  [1m[35mProject Load (0.0ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = 21 LIMIT 1
+  [1m[36mEnabledModule Load (0.0ms)[0m  [1mSELECT name FROM "enabled_modules" WHERE "enabled_modules"."project_id" = 21[0m
+DEBUG: user without permissions
+DEBUG: dochash not nil.. 
+DEBUG: limit_conditions 11
+  [1m[35mAttachment Load (0.0ms)[0m  SELECT "attachments".* FROM "attachments" WHERE "attachments"."disk_filename" = '111019130814_bob.docx' LIMIT 1
+DEBUG: docattach not nil..:  #<Attachment id: 398, container_id: 940, container_type: "Issue", filename: "bob.docx", disk_filename: "111019130814_bob.docx", filesize: 9889, content_type: "application/vnd.openxmlformats-officedocument.wordp...", digest: "df2e139fa37ae7c2693e2709c72f2e45", downloads: 0, author_id: 3, created_on: "2011-10-19 03:08:14", description: "">
+  [1m[36mIssue Load (10.0ms)[0m  [1mSELECT "issues".* FROM "issues" WHERE "issues"."id" = 940 LIMIT 1[0m
+DEBUG: adding attach.. 
+  [1m[35mCACHE (0.0ms)[0m  SELECT "projects".* FROM "projects" WHERE "projects"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT name FROM "enabled_modules" WHERE "enabled_modules"."project_id" = 1[0m
+DEBUG: xapian searched
+DEBUG result_count: 4
+DEBUG results: 4
+ERROR: compiling _plugins_redmine_xapian_app_views_search_index_html_erb__938079359517974107_49695620 RAISED /usr/share/redmine/plugins/redmine_xapian/app/views/search/index.html.erb:27: syntax error, unexpected ',', expecting ')'
+....append= ( content_tag (:label, l(:label_stemming_lang)));@o...
+...                               ^
+/usr/share/redmine/plugins/redmine_xapian/app/views/search/index.html.erb:27: syntax error, unexpected ')', expecting keyword_end
+...abel, l(:label_stemming_lang)));@output_buffer.safe_concat('...
+...                               ^
+Function body:           def _plugins_redmine_xapian_app_views_search_index_html_erb__938079359517974107_49695620(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "search/index";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h2>');@output_buffer.append= ( l(:label_search));@output_buffer.safe_concat('</h2>
+
+<div class="box">
+');@output_buffer.append=  form_tag({}, :method => :get) do @output_buffer.safe_concat('
+');@output_buffer.append= ( label_tag "search-input", l(:description_search), :class => "hidden-for-sighted" );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('<p>');@output_buffer.append= ( text_field_tag 'q', @question, :size => 60, :id => 'search-input' );@output_buffer.safe_concat('
+');@output_buffer.append= ( javascript_tag "Field.focus('search-input')" );@output_buffer.safe_concat('
+');@output_buffer.append= ( project_select_tag );@output_buffer.safe_concat('
+');@output_buffer.append= ( hidden_field_tag 'all_words', '', :id => nil );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('<label>');@output_buffer.append= ( check_box_tag 'all_words', 1, @all_words );@output_buffer.safe_concat(' ');@output_buffer.append= ( l(:label_all_words) );@output_buffer.safe_concat('</label>
+');@output_buffer.append= ( hidden_field_tag 'titles_only', '', :id => nil );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('<label>');@output_buffer.append= ( check_box_tag 'titles_only', 1, @titles_only );@output_buffer.safe_concat(' ');@output_buffer.append= ( l(:label_search_titles_only) );@output_buffer.safe_concat('</label>
+</p>
+<p>
+'); @object_types.each do |t| 
+ logger.debug "DEBUG: object type: " + t.inspect 
+@output_buffer.safe_concat('<label>');@output_buffer.append= ( check_box_tag t, 1, @scope.include?(t) );@output_buffer.safe_concat(' ');@output_buffer.append= ( type_label(t) );@output_buffer.safe_concat('</label>
+'); end 
+@output_buffer.safe_concat('</p>
+'); logger.debug "DEBUG: object_types from search: " + Redmine::Search.available_search_types.inspect 
+@output_buffer.safe_concat('
+'); if @object_types.include?("attachments") 
+   Setting.plugin_redmine_xapian['stem_langs'].push(Setting.plugin_redmine_xapian['stemming_lang']) unless Setting.plugin_redmine_xapian['stem_langs'].include?(Setting.plugin_redmine_xapian['stemming_lang']) 
+@output_buffer.safe_concat('
+  <p>
+'); if  Setting.plugin_redmine_xapian['stem_on_search'] == "true" then 
+@output_buffer.safe_concat(' <label>');@output_buffer.append= ( content_tag (:label, l(:label_stemming_lang)));@output_buffer.safe_concat(' ');@output_buffer.append= ( select_tag  "user_stem_lang", 
+                        options_for_select(  Setting.plugin_redmine_xapian['stem_langs'], @user_stem_lang )  );@output_buffer.safe_concat(' 
+');@output_buffer.safe_concat('                          
+  </label>
+  ');@output_buffer.append= (content_tag(:label, l(:label_stemming_strategy)));@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= (radio_button_tag 'user_stem_strategy', 'STEM_NONE', 'STEM_NONE' == @user_stem_strategy );@output_buffer.safe_concat(' ');@output_buffer.append= ( l(:label_stem_none));@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= (radio_button_tag 'user_stem_strategy', 'STEM_SOME', 'STEM_SOME' == @user_stem_strategy );@output_buffer.safe_concat(' ');@output_buffer.append= ( l(:label_stem_some));@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= (radio_button_tag 'user_stem_strategy', 'STEM_ALL',  'STEM_ALL' == @user_stem_strategy );@output_buffer.safe_concat(' ');@output_buffer.append= ( l(:label_stem_all));@output_buffer.safe_concat('
+');end
+@output_buffer.safe_concat('
+
+');end
+@output_buffer.safe_concat('<p>');@output_buffer.append= ( submit_tag l(:button_submit), :name => 'submit' );@output_buffer.safe_concat('</p>
+'); end 
+@output_buffer.safe_concat('</div>
+'); if @results 
+@output_buffer.safe_concat('    <div id="search-results-counts">
+    ');@output_buffer.append= ( render_results_by_type(@results_by_type) unless @scope.size == 1 );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('    </div>
+    
+    <h3>');@output_buffer.append= ( l(:label_result_plural) );@output_buffer.safe_concat(' (');@output_buffer.append= ( @results_by_type.values.sum );@output_buffer.safe_concat(')</h3>
+    
+    <dl id="search-results">
+');       @results.each do |e| 
+@output_buffer.safe_concat('        <dt class="');@output_buffer.append= ( e.event_type );@output_buffer.safe_concat('">');@output_buffer.append= ( content_tag('span', h(e.project), :class => 'project') unless @project == e.project  );@output_buffer.safe_concat(' 
+'); if e.event_type == "attachment" then 
+@output_buffer.safe_concat('<strong>
+');@output_buffer.append= (	link_to highlight_tokens(truncate(e.event_title, :length => 255), @tokens), e.event_url	);@output_buffer.safe_concat('
+');@output_buffer.safe_concat('</strong>
+');	if e.container_type == "Document" 
+@output_buffer.append= (		link_to truncate( l(:label_document)+e.container_name, :length => 255), e.container_url );@output_buffer.safe_concat('
+');	elsif e.container_type == "Message" 
+@output_buffer.append= (		link_to truncate( l(:label_message)+e.container_name, :length => 255), e.container_url );@output_buffer.safe_concat('
+');	elsif e.container_type == "WikiPage" 
+@output_buffer.append= (		link_to truncate( l(:label_wiki)+e.container_name, :length => 255), e.container_url	 );@output_buffer.safe_concat('	
+');	elsif e.container_type == "Issue" 
+@output_buffer.append= (		link_to truncate( l(:label_issue)+e.container_name, :length => 255), e.container_url );@output_buffer.safe_concat('
+');      elsif e.container_type == "Article" 
+@output_buffer.append= (        	link_to truncate( l(:label_article)+e.container_name, :length => 255), e.container_url );@output_buffer.safe_concat('
+');    	end
+
+ else 
+@output_buffer.append= (	link_to highlight_tokens(truncate(e.event_title, :length => 255), @tokens), e.event_url );@output_buffer.safe_concat('
+');end
+@output_buffer.safe_concat('</dt>
+<dd><span class="description">
+'); if e.event_type == "attachment" then 
+@output_buffer.safe_concat('        ');@output_buffer.append= ( SearchHelper2.highlight_tokens2(e.event_description, @tokens) );@output_buffer.safe_concat('
+'); else
+@output_buffer.safe_concat('	');@output_buffer.append= ( highlight_tokens(e.event_description, @tokens) );@output_buffer.safe_concat('
+'); end 
+@output_buffer.safe_concat('</span>
+        <span class="author">');@output_buffer.append= ( format_time(e.event_datetime) );@output_buffer.safe_concat('</span></dd>
+');       end 
+@output_buffer.safe_concat('    </dl>
+'); end 
+@output_buffer.safe_concat('
+<p><center>
+'); if @pagination_previous_date 
+@output_buffer.append= ( link_to_content_update("\xc2\xab " + l(:label_previous),
+      params.merge(:previous => 1,
+                   :offset => @pagination_previous_date.strftime("%Y%m%d%H%M%S"))) );@output_buffer.safe_concat('&nbsp;
+'); end 
+ if @pagination_next_date 
+@output_buffer.append= ( link_to_content_update(l(:label_next) + " \xc2\xbb",
+      params.merge(:previous => nil,
+                   :offset => @pagination_next_date.strftime("%Y%m%d%H%M%S"))) );@output_buffer.safe_concat('
+'); end 
+@output_buffer.safe_concat('</center></p>
+
+'); html_title(l(:label_search)) 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/template.rb:297:in `module_eval'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/template.rb:297:in `compile'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/template.rb:244:in `block in compile!'
+<internal:prelude>:10:in `synchronize'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/template.rb:232:in `compile!'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/template.rb:144:in `block in render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications.rb:125:in `instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/template.rb:143:in `render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications.rb:123:in `block in instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications.rb:123:in `instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_view/renderer/renderer.rb:17:in `render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/rendering.rb:88:in `render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/rendering.rb:16:in `render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activerecord-3.2.6/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/base.rb:167:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:458:in `_run__1327909797948604272__process_action__2890097576900565488__callbacks'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:405:in `__run_callback'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications.rb:123:in `block in instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/notifications.rb:123:in `instrument'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/params_wrapper.rb:206:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activerecord-3.2.6/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/base.rb:121:in `process'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/abstract_controller/rendering.rb:45:in `process'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal.rb:203:in `dispatch'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_controller/metal.rb:246:in `block in action'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/routing/route_set.rb:600:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-openid-1.3.1/lib/rack/openid.rb:98:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/share/redmine/plugins/redmine_dmsf/lib/redmine_dmsf/webdav/no_parse.rb:33:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activerecord-3.2.6/lib/active_record/query_cache.rb:64:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activerecord-3.2.6/lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:405:in `_run__4072094195629175573__call__3060813162759035737__callbacks'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:405:in `__run_callback'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.6/lib/rails/rack/logger.rb:26:in `call_app'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.6/lib/rails/rack/logger.rb:16:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/activesupport-3.2.6/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/static.rb:62:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-cache-1.2/lib/rack/cache/context.rb:136:in `forward'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-cache-1.2/lib/rack/cache/context.rb:245:in `fetch'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-cache-1.2/lib/rack/cache/context.rb:185:in `lookup'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-cache-1.2/lib/rack/cache/context.rb:66:in `call!'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/rack-cache-1.2/lib/rack/cache/context.rb:51:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.6/lib/rails/engine.rb:479:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.6/lib/rails/application.rb:220:in `call'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/railties-3.2.6/lib/rails/railtie/configurable.rb:30:in `method_missing'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/classic_rails/application_spawner.rb:321:in `start_request_handler'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/classic_rails/application_spawner.rb:275:in `block in handle_spawn_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/utils.rb:470:in `safe_fork'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/classic_rails/application_spawner.rb:270:in `handle_spawn_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server.rb:180:in `start'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/classic_rails/application_spawner.rb:149:in `start'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/spawn_manager.rb:219:in `block (2 levels) in spawn_rails_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/spawn_manager.rb:214:in `block in spawn_rails_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+<internal:prelude>:10:in `synchronize'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/spawn_manager.rb:213:in `spawn_rails_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/spawn_manager.rb:132:in `spawn_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+/usr/local/rvm/gems/ruby-1.9.3-p194/gems/passenger-3.0.15/helper-scripts/passenger-spawn-server:99:in `<main>'
+  Rendered plugins/redmine_xapian/app/views/search/index.html.erb within layouts/base (10.0ms)
+Completed 500 Internal Server Error in 550ms
+
+ActionView::Template::Error (/usr/share/redmine/plugins/redmine_xapian/app/views/search/index.html.erb:27: syntax error, unexpected ',', expecting ')'
+....append= ( content_tag (:label, l(:label_stemming_lang)));@o...
+...                               ^
+/usr/share/redmine/plugins/redmine_xapian/app/views/search/index.html.erb:27: syntax error, unexpected ')', expecting keyword_end
+...abel, l(:label_stemming_lang)));@output_buffer.safe_concat('...
+...                               ^):
+    24: 
+    25:   <p>
+    26: <% if  Setting.plugin_redmine_xapian['stem_on_search'] == "true" then %>
+    27:  <label><%= content_tag (:label, l(:label_stemming_lang))%> <%= select_tag  "user_stem_lang", 
+    28:                         options_for_select(  Setting.plugin_redmine_xapian['stem_langs'], @user_stem_lang )  %> 
+    29:                           
+    30:   </label>
+  actionpack (3.2.6) lib/action_view/template.rb:297:in `module_eval'
+  actionpack (3.2.6) lib/action_view/template.rb:297:in `compile'
+  actionpack (3.2.6) lib/action_view/template.rb:244:in `block in compile!'
+  <internal:prelude>:10:in `synchronize'
+  actionpack (3.2.6) lib/action_view/template.rb:232:in `compile!'
+  actionpack (3.2.6) lib/action_view/template.rb:144:in `block in render'
+  activesupport (3.2.6) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.6) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.6) lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+  actionpack (3.2.6) lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+  activesupport (3.2.6) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.6) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.6) lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+  actionpack (3.2.6) lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+  actionpack (3.2.6) lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+  actionpack (3.2.6) lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  actionpack (3.2.6) lib/action_view/renderer/template_renderer.rb:18:in `render'
+  actionpack (3.2.6) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.6) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.6) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.6) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.6) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.6) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.6) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.6) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.6) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.6) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /usr/local/rvm/rubies/ruby-1.9.3-p194/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+  activesupport (3.2.6) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.6) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.6) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.6) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.6) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.6) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.6) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:458:in `_run__1327909797948604272__process_action__2890097576900565488__callbacks'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.6) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.6) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.6) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.6) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.6) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.6) lib/action_controller/metal/params_wrapper.rb:206:in `process_action'
+  activerecord (3.2.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.6) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.6) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.6) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.6) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.6) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.6) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.6) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.6) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.6) lib/action_dispatch/routing/route_set.rb:600:in `call'
+  rack-openid (1.3.1) lib/rack/openid.rb:98:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.1) lib/rack/etag.rb:23:in `call'
+  rack (1.4.1) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  plugins/redmine_dmsf/lib/redmine_dmsf/webdav/no_parse.rb:33:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:205:in `context'
+  rack (1.4.1) lib/rack/session/abstract/id.rb:200:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  activerecord (3.2.6) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:473:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:405:in `_run__4072094195629175573__call__3060813162759035737__callbacks'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.6) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.6) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.6) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-cache (1.2) lib/rack/cache/context.rb:136:in `forward'
+  rack-cache (1.2) lib/rack/cache/context.rb:245:in `fetch'
+  rack-cache (1.2) lib/rack/cache/context.rb:185:in `lookup'
+  rack-cache (1.2) lib/rack/cache/context.rb:66:in `call!'
+  rack-cache (1.2) lib/rack/cache/context.rb:51:in `call'
+  railties (3.2.6) lib/rails/engine.rb:479:in `call'
+  railties (3.2.6) lib/rails/application.rb:220:in `call'
+  railties (3.2.6) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  passenger (3.0.15) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.15) lib/phusion_passenger/abstract_request_handler.rb:516:in `accept_and_process_next_request'
+  passenger (3.0.15) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.15) lib/phusion_passenger/classic_rails/application_spawner.rb:321:in `start_request_handler'
+  passenger (3.0.15) lib/phusion_passenger/classic_rails/application_spawner.rb:275:in `block in handle_spawn_application'
+  passenger (3.0.15) lib/phusion_passenger/utils.rb:470:in `safe_fork'
+  passenger (3.0.15) lib/phusion_passenger/classic_rails/application_spawner.rb:270:in `handle_spawn_application'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.15) lib/phusion_passenger/classic_rails/application_spawner.rb:149:in `start'
+  passenger (3.0.15) lib/phusion_passenger/spawn_manager.rb:219:in `block (2 levels) in spawn_rails_application'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.15) lib/phusion_passenger/spawn_manager.rb:214:in `block in spawn_rails_application'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server_collection.rb:82:in `block in synchronize'
+  <internal:prelude>:10:in `synchronize'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.15) lib/phusion_passenger/spawn_manager.rb:213:in `spawn_rails_application'
+  passenger (3.0.15) lib/phusion_passenger/spawn_manager.rb:132:in `spawn_application'
+  passenger (3.0.15) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.15) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.15) helper-scripts/passenger-spawn-server:99:in `<main>'
+
+
